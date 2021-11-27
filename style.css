@@ -1,0 +1,25 @@
+#array {
+	background-color: white;
+	height: 100px;
+	width: 400px;
+	margin-left: 50px;
+	position: relative;
+	margin-top: 64px;
+	margin-bottom: 50px;
+}
+
+.block_array {
+	width: 28px;
+	background-color: #6b5b95;
+	position: absolute;
+	bottom: 0px;
+	transition: 0.2s all ease;
+}
+
+.block_id {
+	position: absolute;
+	color: black;
+	margin-top: -20px;
+	width: 100%;
+	text-align: center;
+}
