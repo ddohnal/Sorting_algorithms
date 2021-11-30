@@ -60,12 +60,12 @@ canvas{
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
   <h3 class="w3-padding-64 w3-center"><b>Seminář<br>programování</b></h3>
   <a href="..\index.html" onclick="w3_close()" class="w3-bar-item w3-button">Třídění</a>
-  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Selection sort</a>
+  <a href="..\Selection_sort\selection_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Selection sort</a>
   <a href="..\Insertion_sort\insertion_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Insertion sort</a>
-  <a href="..\Bubble_sort\bubble_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Bubble sort</a>
+  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Bubble sort</a>
   <a href="..\Shaker_sort\shaker_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shaker sort</a>
   <a href="..\Shell_sort\shell_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shell sort</a>
-  <a href="..\Quick_sort\quick_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Quick sort</a>
+  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Quick sort</a>
   <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Merge sort</a>
   <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Srovnání</a>
   <!-- <i class="fa fa-close"></i> -->
@@ -97,10 +97,11 @@ canvas{
   <!-- Contact section -->
   <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
     <div class="w3-content" style="max-width:1000px">
-            <h2><b>Selection sort</b></h2>
-            <p>Selection sort je jednoduchý třídicí algoritmus. Tento třídicí algoritmus je algoritmus založený na porovnávání na místě, v němž je seznam rozdělen na dvě části, na setříděnou část na levém konci a na nesetříděnou část na pravém konci. Zpočátku je tříděná část prázdná a netříděná část je celý seznam.</p>
-            <p>Z neuspořádaného pole se vybere nejmenší prvek, který se prohodí s prvkem úplně vlevo, a tento prvek se stane součástí uspořádaného pole. Tento proces pokračuje posunutím hranice neuspořádaného pole o jeden prvek doprava.</p>
-            <p>Tento algoritmus není vhodný pro velké soubory dat, protože jeho průměrná a nejhorší složitost je $O(n^2)$, kde n je počet prvků.</p>
+            <h2><b>Bubble sort</b></h2>
+            <p>Bubble Sort porovnává všechny prvky jeden po druhém a řadí je na základě jejich hodnot.</p>
+            <p>Pokud je třeba dané pole seřadit vzestupně, pak Bubble sort začne porovnáním prvního prvku pole s druhým prvkem, pokud je první prvek větší než druhý, oba prvky prohodí a pak přejde k porovnání druhého a třetího prvku atd.</p>
+            <p>Říká se mu Bubble sort, protože při každé úplné iteraci největší prvek v daném poli probublává směrem k poslednímu místu nebo k nejvyššímu indexu, podobně jako vodní bublina stoupá k hladině.</p>
+
             <h3>Ukázka</h3>
             <div id="array"></div>
             <div class="w3-center">
@@ -111,27 +112,30 @@ canvas{
 
             <h3>Pseudokód</h3>
             <div class="w3-panel w3-card w3-light-grey">
-                  <h4>Selection sort</h4>
+                  <h4>Bubble sort</h4>
                   <div class="w3-code">
                     <pre class="tab">
 array: pole prvů
 n: délka pole
 
-for i = 1 to n - 1
-  //nastavit aktuální prvek jako minimální
-  iMin = i
-  for j = i+1 to n
-        //zkontroluj, zda je prvek minimalní  <div class="w3-text-red">        if array[j] < array[iMmin] then iMin = j </div>        end if
+for i = 0 to n - 1
+  for j = 0 to j < n - i - 1<div class="w3-text-red">     if array[j] > array[j+1] </div>      swap(array[j],array[j+1])
+    end if
   end for
-  //prohodí minimální prvek s aktuálním prvkem
-  swap(array[i],array[iMin])
-end for           </pre>
+end for
+</pre>
                   </div>
             </div>
             <h3>Složitost</h3>
-            <p>Při zkoumání složitosti budeme počítat jen operace porovnání. Porovnání se provádí pouze na červeně označeném řádku (tj. jednou v každém vnitřním cyklu).</p>
-            <p>Celkový počet porovnání $ = (n - 1) + (n - 2) + \cdots + 1 = \dfrac{n \cdot (n-1)}{2}$. Selection sort má tedy časovou složitost $O(n^2)$.</p>
-            <h3>Graf závislosti počtu porovnání na počtu prvků</h3>
+            <p>Při zkoumání budeme opět počítat jen operace porovnání. Porovnání se provádí na červeném řádku (tj. jednou v každém vnitřním cyklu).</p>
+            <p>V prvním kroku se prochází všech $n$ prvků (tedy $n-1$) porovnání. V druhém kroku se prochází $n-1$ prvků (největší se už dostal na konec pole, tedy $n-2$ porovnání). Takto se pokračuje dále, až v posledním průchodu má zbylá část dva prvky (provede se tedy jedno porovnání).</p>
+            <p>Celkově tedy: $(n-1)+ (n-2) + \dots + 1 = \dfrac{(n-1)\cdot n}{2} = \dfrac{n^2-2}{2}$. Bubble sort má tedy složitost $O(n^2)$.</p>
+            <h3>Optimalizovaný Bubble sort</h3>
+            <p>Abychom optimalizovali náš algoritmus Bubble sort, můžeme zavést proměnnou, která bude sledovat, zda se prvky uvnitř vnitřního cyklu for provádí výměny.</p>
+            <p>Pokud v určité iteraci nedošlo k prohození prvků, znamená to, že pole bylo setříděno a my můžeme z cyklu for vyskočit, místo abychom prováděli všechny iterace.</p>
+						<p> Další možností optimalizace je ukládání si posledniho indexu, kde proběhla změna (pomůže v případě, kdy se na konci pole nachází již setřízená část)</p>
+						<p>Je však nutné zmínit, že obě tyto optimalizace <b>nevedou</b> k radíkálnímu urychlení. Poslední možnou optimalizací je tzv. oboustranný Bubble sort (tomuto třídícímu algoritmu je věnována kapitola).</p>
+						<h3>Graf závislosti počtu porovnání na počtu prvků</h3>
             <div class="w3-center">
               <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
             </div>
@@ -147,7 +151,7 @@ end for           </pre>
   </div>
 
 <!-- End page content -->
-
+</div>
 </body>
 <script src="script.js"></script>
 <script src="graph.js"></script>

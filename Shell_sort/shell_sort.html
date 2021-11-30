@@ -60,11 +60,11 @@ canvas{
 <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
   <h3 class="w3-padding-64 w3-center"><b>Seminář<br>programování</b></h3>
   <a href="..\index.html" onclick="w3_close()" class="w3-bar-item w3-button">Třídění</a>
-  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Selection sort</a>
+  <a href="..\Selection_sort\selection_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Selection sort</a>
   <a href="..\Insertion_sort\insertion_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Insertion sort</a>
   <a href="..\Bubble_sort\bubble_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Bubble sort</a>
   <a href="..\Shaker_sort\shaker_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shaker sort</a>
-  <a href="..\Shell_sort\shell_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shell sort</a>
+  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Shell sort</a>
   <a href="..\Quick_sort\quick_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Quick sort</a>
   <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Merge sort</a>
   <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Srovnání</a>
@@ -97,11 +97,17 @@ canvas{
   <!-- Contact section -->
   <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
     <div class="w3-content" style="max-width:1000px">
-            <h2><b>Selection sort</b></h2>
-            <p>Selection sort je jednoduchý třídicí algoritmus. Tento třídicí algoritmus je algoritmus založený na porovnávání na místě, v němž je seznam rozdělen na dvě části, na setříděnou část na levém konci a na nesetříděnou část na pravém konci. Zpočátku je tříděná část prázdná a netříděná část je celý seznam.</p>
-            <p>Z neuspořádaného pole se vybere nejmenší prvek, který se prohodí s prvkem úplně vlevo, a tento prvek se stane součástí uspořádaného pole. Tento proces pokračuje posunutím hranice neuspořádaného pole o jeden prvek doprava.</p>
-            <p>Tento algoritmus není vhodný pro velké soubory dat, protože jeho průměrná a nejhorší složitost je $O(n^2)$, kde n je počet prvků.</p>
-            <h3>Ukázka</h3>
+            <h2><b>Shell sort</b></h2>
+            <p>Shell sort je zobecněná verze algoritmu Insertion sort. Nejprve seřadí prvky, které jsou od sebe vzdálené, a postupně zmenšuje interval mezi řadícími prvky. </p>
+						<p>Interval mezi prvky se zmenšuje na základě použité posloupnosti. Některé z optimálních posloupností, které lze použít v algoritmu shell sort, jsou:</p>
+						<ol>
+							<li>Původní Shellova posloupnost: $ \lfloor{ \dfrac{n}{2^k}} \rfloor \rightarrow  \dfrac{n}{2}, \dfrac{n}{4}, \dots , 1$. </li>
+							<li>Hibbardova posloupnost: $2^k-1 \rightarrow 65535, 32767, 16383, 8191, 4095, 2047, 1023, 511, 255, 127, 63, 31, 15, 7, 3, 1$. </li>
+							<li>Stasevichova posloupnst: $2^k+1 \rightarrow 65537, 32769, 16385, 8193, 4097, 2049, 1025, 513, 257, 129, 65, 33, 17, 9, 5, 3, 2, 1 $.</li>
+							<li>Ciurova posloupnost: empiricky  $ \rightarrow 701, 301, 132, 57, 23, 10, 4, 1$.</li>
+						</ol>
+						<h3>Ukázka</h3>
+						<p>V ukázce je použita původní Shellova posloupnost.</p>
             <div id="array"></div>
             <div class="w3-center">
               <button id="runBtn" onclick="startSorting()" class="w3-button w3-green w3-round-large" disabled >Start</button>
@@ -111,26 +117,27 @@ canvas{
 
             <h3>Pseudokód</h3>
             <div class="w3-panel w3-card w3-light-grey">
-                  <h4>Selection sort</h4>
+                  <h4>Shell sort</h4>
                   <div class="w3-code">
                     <pre class="tab">
 array: pole prvů
 n: délka pole
 
-for i = 1 to n - 1
-  //nastavit aktuální prvek jako minimální
-  iMin = i
-  for j = i+1 to n
-        //zkontroluj, zda je prvek minimalní  <div class="w3-text-red">        if array[j] < array[iMmin] then iMin = j </div>        end if
-  end for
-  //prohodí minimální prvek s aktuálním prvkem
-  swap(array[i],array[iMin])
-end for           </pre>
+for interval = n/2 to 0; interval /= 2
+	for i = interval to n
+	t = array[i]
+	j
+		for  j = i; j >= interval and array[j-interval] > temp; j -= interval
+			array[j]=array[j-interval]
+		end for
+	array[j] = t
+end for
+</pre>
                   </div>
             </div>
             <h3>Složitost</h3>
-            <p>Při zkoumání složitosti budeme počítat jen operace porovnání. Porovnání se provádí pouze na červeně označeném řádku (tj. jednou v každém vnitřním cyklu).</p>
-            <p>Celkový počet porovnání $ = (n - 1) + (n - 2) + \cdots + 1 = \dfrac{n \cdot (n-1)}{2}$. Selection sort má tedy časovou složitost $O(n^2)$.</p>
+            <p>Shellovo třídění vychází z Insertion sortu ($O(n^2)$). Aplikujme nyní třídění Insertion sortu ne na celou posloupnost ale na $h$ jejich podposloupností ($h>1$).Každá podposloupnost bude obsahovat řádově $\dfrac{n}{h}$ prvků. Časová složitost u každé takovéto podposloupnosti je $\dfrac{(\dfrac{n}{h})^2}{4} = \dfrac{n^2}{4h^2}$.Těchto posloupností je však $h$, celkově tedy $h\cdot \dfrac{n^2}{4h^2} = \dfrac{n^2}{4h}$. Což je výrazně méně, než u klasického Insertion sortu. Výsledná časová složitost Shell sortu je výrazně závislá na vybrané volbě mezer. Nejlepší výsledek, jaký můžeme dosáhnout je $O(n^{\frac{4}{3}})$, obecně však $O(n^2)$.</p>
+
             <h3>Graf závislosti počtu porovnání na počtu prvků</h3>
             <div class="w3-center">
               <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
@@ -147,7 +154,7 @@ end for           </pre>
   </div>
 
 <!-- End page content -->
-
+</div>
 </body>
 <script src="script.js"></script>
 <script src="graph.js"></script>
