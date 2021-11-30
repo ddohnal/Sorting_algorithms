@@ -22,7 +22,7 @@ var container = document.getElementById("array");
 var containerPartition = document.getElementById("array_partition");
 
 function generatearray(n) {
-  container.innerHTML = "";
+  // container.innerHTML = "";
 	for (var i = 0; i < n; i++) {
 
 		// Return a value from 1 to 100 (both inclusive)
