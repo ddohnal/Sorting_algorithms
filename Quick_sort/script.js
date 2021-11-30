@@ -50,7 +50,7 @@ function generatearray(n) {
 	}
 }
 function generatearrayPartition(n) {
-  containerPartition.innerHTML = "";
+
 	for (var i = 0; i < n; i++) {
 
 		// Return a value from 1 to 100 (both inclusive)
