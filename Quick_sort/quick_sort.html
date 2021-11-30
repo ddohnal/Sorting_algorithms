@@ -12,7 +12,7 @@
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
-#array {
+#array,#array_partition {
 	background-color: #f1f1f1;
 	height: 300px;
 	width: 600px;
@@ -21,7 +21,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	margin: 20px auto;
 }
 
-.block_array {
+.block_array,.block_partition {
 	width: 28px;
   /* sedá */
 	background-color: #979797;
@@ -110,17 +110,19 @@ canvas{
               <li>Pivota vypočítáme jako medián prvků v poli.</li>
               <li>Pivota vybereme náhodně z prvků v poli.</li>
             </ol>
+						<h3>Partition</h3>
+						<div id="array_partition"></div>
             <h3>Ukázka</h3>
-            <div id="array"></div>
-            <div class="w3-center">
+            <!-- <div id="array"></div> -->
+            <!-- <div class="w3-center">
               <button id="runBtn" onclick="startSorting()" class="w3-button w3-green w3-round-large" disabled >Start</button>
               <button id="resetBtn" onclick="resetArray()"class="w3-button w3-black w3-round-large">Reset</button>
-            </div>
+            </div> -->
 
 
             <h3>Pseudokód</h3>
-            <div class="w3-panel w3-card w3-light-grey">
-                  <h4>Insertion sort</h4>
+            <!-- <div class="w3-panel w3-card w3-light-grey">
+                  <h4>Quick sort</h4>
                   <div class="w3-code">
                     <pre class="tab">
 array: pole prvů
@@ -146,7 +148,7 @@ end for</pre>
             <p>Delka setřízeného pole je však v jednotlivých krocích $1, 2, 3, \dots n-1$. Počty porovnání jsou tedy:</p>
             <p>Průměrný počet porovnání: $\dfrac{2+3+4+\dots + n}{2} = \dfrac{\dfrac{n \cdot (n-1)}{2}-1}{2} = \dfrac{n^2+n-2}{4}$.</p>
             <p>Maximální počet porovnání: $1+2+3+\dots (n-1) = \dfrac{(n-1)\cdot n}{2} = \dfrac{n^2 - n}{2}$.</p>
-            <p>Z tohoto plyne, že složitost Insertion sortu je $O(n^2)$.</p>
+            <p>Z tohoto plyne, že složitost Insertion sortu je $O(n^2)$.</p> -->
             <h3>Graf závislosti počtu porovnání na počtu prvků</h3>
             <div class="w3-center">
               <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
