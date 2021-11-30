@@ -50,7 +50,7 @@ function generatearray(n) {
 	}
 }
 function generatearrayPartition(n) {
-  container.innerHTML = "";
+  containerPartition.innerHTML = "";
 	for (var i = 0; i < n; i++) {
 
 		// Return a value from 1 to 100 (both inclusive)
@@ -277,7 +277,7 @@ async function onlyPartition(left, right) {
     for(var k = left;k<i;k++){
       blocks[k].style.backgroundColor = "#FF0000";
     }
-    for(var k = i+1;k<=right;k++){
+    for(var k = i;k<=right;k++){
       blocks[k].style.backgroundColor = "#0000FF";
     }
 }
