@@ -112,7 +112,7 @@ async function partition(blocks, left, right) {
 					await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 350)
   	      );
 					blocks[i].style.backgroundColor = "#979797";
 
@@ -124,7 +124,7 @@ async function partition(blocks, left, right) {
 					await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 350)
   	      );
 
 					blocks[j].style.backgroundColor = "#979797";
@@ -140,7 +140,7 @@ async function partition(blocks, left, right) {
           await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 350)
   	      );
           //sawpping two elements
           var temp1 = blocks[i].style.height;
@@ -162,7 +162,7 @@ async function partition(blocks, left, right) {
           await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 350)
   	      );
 
         }
@@ -216,26 +216,29 @@ async function onlyPartition(left, right) {
 					await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 500)
   	      );
 					blocks[i].style.backgroundColor = "#979797";
 
             i++;
         }
+        blocks[i].style.backgroundColor = "#FCB018";
         while (Number(blocks[j].childNodes[0].innerHTML) > pivot) {
 					blocks[j].style.backgroundColor = "#FCB018";
 
 					await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 500)
   	      );
 
 					blocks[j].style.backgroundColor = "#979797";
 
             j--;
         }
+        blocks[j].style.backgroundColor = "#FCB018";
         if (i <= j) {
+
           //changing the color of swaping elements
           blocks[i].style.backgroundColor = "#FCB018";
           blocks[j].style.backgroundColor = "#FCB018";
@@ -244,7 +247,7 @@ async function onlyPartition(left, right) {
           await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 500)
   	      );
           //sawpping two elements
           var temp1 = blocks[i].style.height;
@@ -258,15 +261,26 @@ async function onlyPartition(left, right) {
           blocks[j].childNodes[0].innerText = temp2;
 
           //Changing the color to the previous one
+          // if (i == mid_index || Number(blocks[i].childNodes[0].innerHTML == pivot)){
+          //   blocks[j].style.backgroundColor = "#00FF00";
+          // }
+          // else if (j == mid_index || Number(blocks[j].childNodes[0].innerHTML == pivot)) {
+          //   blocks[i].style.backgroundColor = "#00FF00";
+          // }
+          // else {
+          //
+          // }
           blocks[i].style.backgroundColor = "#979797";
           blocks[j].style.backgroundColor = "#979797";
+
+
 
             i++;
             j--;
           await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
-  	        }, 250)
+  	        }, 500)
   	      );
 
         }
