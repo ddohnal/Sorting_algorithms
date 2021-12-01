@@ -12,7 +12,15 @@
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
 .w3-third img:hover{opacity: 1}
-#array,#array_partition {
+#array {
+	background-color: #f1f1f1;
+	height: 300px;
+	width: 600px;
+	margin-left: 0px;
+	position: relative;
+	margin: 20px auto;
+}
+#array_partition {
 	background-color: #f1f1f1;
 	height: 300px;
 	width: 600px;
@@ -21,7 +29,15 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	margin: 20px auto;
 }
 
-.block_array,.block_partition {
+.block_array {
+	width: 28px;
+  /* sedá */
+	background-color: #979797;
+	position: absolute;
+	bottom: 0px;
+	transition: 0.2s all ease;
+}
+.block_partition {
 	width: 28px;
   /* sedá */
 	background-color: #979797;
@@ -113,7 +129,7 @@ canvas{
 						<h3>Partition</h3>
 						<div id="array_partition"></div>
             <h3>Ukázka</h3>
-            <!-- <div id="array"></div> -->
+            <div id="array"></div>
             <!-- <div class="w3-center">
               <button id="runBtn" onclick="startSorting()" class="w3-button w3-green w3-round-large" disabled >Start</button>
               <button id="resetBtn" onclick="resetArray()"class="w3-button w3-black w3-round-large">Reset</button>
