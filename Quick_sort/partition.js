@@ -34,15 +34,15 @@ function generatearrayPartition(n) {
 
 async function onlyPartition(left, right) {
     var blocksPartition = document.querySelectorAll(".block_partition");
-    var mid_index = Math.floor((right + left) / 2);
+    var pivot_index = Math.floor((right + left) / 2);
     var pivot   = Number(blocksPartition[Math.floor((right + left) / 2)].childNodes[0].innerHTML);//middle element
-    blocksPartition[mid_index].style.backgroundColor = "#00FF00";
+    blocksPartition[pivot_index].style.backgroundColor = "#00FF00";
         i       = left; //left pointer
         j       = right; //right pointer
     while (i <= j) {
         while (Number(blocksPartition[i].childNodes[0].innerHTML) < pivot) {
 
-					blocksPartition[i].style.backgroundColor = "#FCB018";
+					blocksPartition[i].style.backgroundColor = "#4ABDFF";
 
 
 					await new Promise((resolve) =>
@@ -61,7 +61,7 @@ async function onlyPartition(left, right) {
 
 
         while (Number(blocksPartition[j].childNodes[0].innerHTML) > pivot) {
-					blocksPartition[j].style.backgroundColor = "#FCB018";
+					blocksPartition[j].style.backgroundColor = "#4ABDFF";
 
 
 					await new Promise((resolve) =>
@@ -91,6 +91,12 @@ async function onlyPartition(left, right) {
   	        }, 500)
   	      );
           //sawpping two elements
+          if (Number(blocksPartition[i].childNodes[0].innerHTML) == pivot && i ==pivot_index){
+            pivot_index = j;
+          }
+          if (Number(blocksPartition[j].childNodes[0].innerHTML) == pivot && j ==pivot_index){
+            pivot_index = i;
+          }
           var temp1 = blocksPartition[i].style.height;
           var temp2 = blocksPartition[i].childNodes[0].innerText;
 
@@ -111,8 +117,10 @@ async function onlyPartition(left, right) {
           // else {
           //
           // }
+
           blocksPartition[i].style.backgroundColor = "#979797";
           blocksPartition[j].style.backgroundColor = "#979797";
+          blocksPartition[pivot_index].style.backgroundColor = "#00FF00";
 
 
 
@@ -128,7 +136,6 @@ async function onlyPartition(left, right) {
     }
 
     //coloring partition
-    blocksPartition[i].style.backgroundColor = "#000";
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
