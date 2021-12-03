@@ -1,4 +1,5 @@
 var containerPartition = document.getElementById("array_partition");
+var isSorting = true;
 
 function generatearrayPartition(n) {
   containerPartition.innerHTML = "";
@@ -41,24 +42,34 @@ async function onlyPartition(left, right) {
 
 					blocksPartition[i].style.backgroundColor = "#FCB018";
 
+
 					await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
   	        }, 500)
   	      );
+          if (isSorting == false){
+            break;
+          }
 					blocksPartition[i].style.backgroundColor = "#979797";
 
             i++;
         }
         blocksPartition[i].style.backgroundColor = "#FCB018";
+
+
         while (Number(blocksPartition[j].childNodes[0].innerHTML) > pivot) {
 					blocksPartition[j].style.backgroundColor = "#FCB018";
+
 
 					await new Promise((resolve) =>
   	        setTimeout(() => {
   	          resolve();
   	        }, 500)
   	      );
+          if (isSorting == false){
+            break;
+          }
 
 					blocksPartition[j].style.backgroundColor = "#979797";
 
@@ -130,6 +141,19 @@ async function onlyPartition(left, right) {
 
 }
 
+function startSorting(){
+  onlyPartition(0,19);
+  document.getElementById("runBtn").disabled = true;
+  isSorting = true;
+}
+
+function resetArray(){
+  generatearrayPartition(20);
+  document.getElementById("runBtn").disabled = false;
+  isSorting = false;
+  console.log("reset");
+
+}
 
 generatearrayPartition(20);
 onlyPartition(0,19);

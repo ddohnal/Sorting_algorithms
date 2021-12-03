@@ -142,7 +142,6 @@ async function InsertSort(delay = 100) {
 function startSorting(){
   InsertSort();
   document.getElementById("runBtn").disabled = true;
-
 }
 
 function resetArray(){
