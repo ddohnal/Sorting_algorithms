@@ -162,7 +162,6 @@ function resetArray(){
   isSorting = false;
   console.log("reset");
   document.getElementById("resetBtn").disabled = true;
-
 }
 
 generatearrayPartition(20);

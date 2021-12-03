@@ -1,4 +1,5 @@
 var container = document.getElementById("array");
+var isSorting = true;
 
 function generatearray(n) {
   container.innerHTML = "";
@@ -56,7 +57,7 @@ async function partition(blocks, left, right) {
   	        setTimeout(() => {
   	          resolve();
   	        }, 350)
-  	      );
+  	      );       
 
 					blocks[j].style.backgroundColor = "#979797";
 
@@ -104,6 +105,8 @@ async function partition(blocks, left, right) {
 
 
 async function quickSort(left, right) {
+    // if (isSorting == false){
+    //   return;
     var blocks = document.querySelectorAll(".block_array");
     var index;
     if (blocks.length > 1) {
@@ -130,6 +133,20 @@ async function quickSort(left, right) {
             await quickSort(index, right);
         }
     }
+}
+
+function startSorting(){
+  quickSort(0, 19);
+  document.getElementById("runBtn").disabled = true;
+  isSorting = true;
+}
+
+function resetArray(){
+  generatearray(20);
+  document.getElementById("runBtn").disabled = false;
+  isSorting = false;
+  console.log("reset");
+  // document.getElementById("resetBtn").disabled = true;
 }
 
 generatearray(20);
