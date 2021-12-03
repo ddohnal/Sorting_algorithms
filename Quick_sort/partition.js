@@ -1,6 +1,8 @@
 var containerPartition = document.getElementById("array_partition");
 var isSorting = true;
 
+
+
 function generatearrayPartition(n) {
   containerPartition.innerHTML = "";
 	for (var i = 0; i < n; i++) {
@@ -138,7 +140,7 @@ async function onlyPartition(left, right) {
     for(var k = i;k<=right;k++){
       blocksPartition[k].style.backgroundColor = "#0000FF";
     }
-
+    document.getElementById("resetBtn").disabled = false;
 }
 
 function startSorting(){
@@ -152,6 +154,7 @@ function resetArray(){
   document.getElementById("runBtn").disabled = false;
   isSorting = false;
   console.log("reset");
+  document.getElementById("resetBtn").disabled = true;
 
 }
 
