@@ -2,6 +2,8 @@ var container = document.getElementById("array_merge");
 var containerSubMerge_1 = document.getElementById("array_submerge_1");
 var containerSubMerge_2 = document.getElementById("array_submerge_2");
 
+var delay = 100;
+
 
 function generateArray(n)  {
   container.innerHTML = "";
@@ -144,7 +146,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
 
@@ -158,7 +160,7 @@ async function merge(left, middle, right){
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 1000)
+        }, delay)
       );
       //end of pause
 
@@ -169,7 +171,7 @@ async function merge(left, middle, right){
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 1000)
+        }, delay)
       );
       //end of pause
 
@@ -182,7 +184,7 @@ async function merge(left, middle, right){
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 1000)
+        }, delay)
       );
       //end of pause
       blocks[finalIndex].style.backgroundColor = "#979797";
@@ -196,7 +198,7 @@ async function merge(left, middle, right){
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 1000)
+        }, delay)
       );
       //end of pause
 
@@ -207,7 +209,7 @@ async function merge(left, middle, right){
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 1000)
+        }, delay)
       );
       //end of pause
 
@@ -218,7 +220,7 @@ async function merge(left, middle, right){
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 1000)
+        }, delay)
       );
       //end of pause
       blocks[finalIndex].style.backgroundColor = "#979797";
@@ -237,7 +239,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
 
@@ -247,7 +249,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
     blocks[finalIndex].style.backgroundColor = "#FCB018";
@@ -255,7 +257,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
     blocksSubMerge_1[leftIndex].style.backgroundColor = "#979797";
@@ -263,11 +265,12 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
     blocks[finalIndex].style.backgroundColor = "#979797";
     leftIndex++;
+    finalIndex++;
   }
 
   //copy remaining elements of rightarray (if existx)
@@ -277,7 +280,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
 
@@ -287,7 +290,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
     blocks[finalIndex].style.backgroundColor = "#FCB018";
@@ -295,7 +298,7 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
 
@@ -304,11 +307,12 @@ async function merge(left, middle, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 1000)
+      }, delay)
     );
     //end of pause
     blocks[finalIndex].style.backgroundColor = "#979797";
     rightIndex++;
+    finalIndex++;
   }
 
   //Stop MERGING
@@ -340,4 +344,4 @@ async function mergeSort(left, right){
 }
 
 generateArray(20);
-mergeSort(0,20);
+mergeSort(0,19);
