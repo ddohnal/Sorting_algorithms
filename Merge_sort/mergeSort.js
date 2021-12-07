@@ -340,23 +340,71 @@ async function mergeSort(left, right){
 
     //coloring first half
     for(var i= left; i<= middle;i++){
-      blocks[i].style.backgroundColor= "F00";
+      blocks[i].style.backgroundColor= "#FF0000";
     }
-    //coloring second half
     for(var i=middle+1;i<= right;i++){
-      blocks[i].style.backgroundColor= "00F";
+      blocks[i].style.backgroundColor= "#0000FF";
     }
+
     //pause
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
       }, delay)
     );
+    //pause
+    //coloring second half
+    for(var i= left; i<= middle;i++){
+      blocks[i].style.backgroundColor= "#979797";
+    }
+    for(var i=middle+1;i<= right;i++){
+      blocks[i].style.backgroundColor= "#979797";
+    }
+
 
     //recursive calling
     await mergeSort(left, middle);
+
+
+    for(var i= left; i<= middle;i++){
+      blocks[i].style.backgroundColor= "#FF0000";
+    }
+    for(var i=middle+1;i<= right;i++){
+      blocks[i].style.backgroundColor= "#0000FF";
+    }
+
+    //pause
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+    //pause
+    //coloring second half
+    for(var i= left; i<= middle;i++){
+      blocks[i].style.backgroundColor= "#979797";
+    }
+    for(var i=middle+1;i<= right;i++){
+      blocks[i].style.backgroundColor= "#979797";
+    }
     await mergeSort(middle+1, right);
 
+
+    for(var i= left; i<= middle;i++){
+      blocks[i].style.backgroundColor= "#979797";
+    }
+    for(var i=middle+1;i<= right;i++){
+      blocks[i].style.backgroundColor= "#979797";
+    }
+
+
+    //recursive calling
+    for(var i= left; i<= middle;i++){
+      blocks[i].style.backgroundColor= "#FF0000";
+    }
+    for(var i=middle+1;i<= right;i++){
+      blocks[i].style.backgroundColor= "#0000FF";
+    }
     await merge(left, middle, right);
   }
 }
