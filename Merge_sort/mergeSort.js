@@ -333,9 +333,27 @@ async function merge(left, middle, right){
 
 
 async function mergeSort(left, right){
+  var blocks = document.querySelectorAll(".block_merge");
   if (left< right){
     //calculate middle index
     var middle = Math.floor((right + left) / 2);
+
+    //coloring first half
+    for(var i= left; i<= middle;i++){
+      blocks[i].style.backgroundColor= "F00";
+    }
+    //coloring second half
+    for(var i=middle+1;i<= right;i++){
+      blocks[i].style.backgroundColor= "00F";
+    }
+    //pause
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, 500)
+    );
+
+    //recursive calling
     await mergeSort(left, middle);
     await mergeSort(middle+1, right);
 
