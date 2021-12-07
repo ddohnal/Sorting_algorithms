@@ -2,7 +2,7 @@ var container = document.getElementById("array_merge");
 var containerSubMerge_1 = document.getElementById("array_submerge_1");
 var containerSubMerge_2 = document.getElementById("array_submerge_2");
 
-var delay = 100;
+var delay = 1000;
 
 
 function generateArray(n)  {
@@ -350,7 +350,7 @@ async function mergeSort(left, right){
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, 500)
+      }, delay)
     );
 
     //recursive calling
