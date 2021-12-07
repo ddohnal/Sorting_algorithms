@@ -1,5 +1,6 @@
 var container = document.getElementById("array_merge");
-var containerSubMerge = document.getElementById("array_submerge");
+var containerSubMerge_1 = document.getElementById("array_submerge_1");
+var containerSubMerge_2 = document.getElementById("array_submerge_2");
 
 
 function generateArray(n)  {
@@ -33,8 +34,8 @@ function generateArray(n)  {
 	}
 }
 
-function generateSubArray(n, values)  {
-  containerSubMerge.innerHTML = "";
+function generateSubArray_1(n, values)  {
+  containerSubMerge_1.innerHTML = "";
 
 	for (var i = 0; i < values.length;i++) {
 
@@ -45,7 +46,7 @@ function generateSubArray(n, values)  {
 		var array_ele = document.createElement("div");
 
 		// Adding class 'block' to div
-		array_ele.classList.add("block_submerge");
+		array_ele.classList.add("block_submerge_1");
 
 		// Adding style to div
 		array_ele.style.height = `${value * 3}px`;
@@ -59,7 +60,38 @@ function generateSubArray(n, values)  {
 
 		// Appending created elements to index.html
 		array_ele.appendChild(array_ele_label);
-		containerSubMerge.appendChild(array_ele);
+		containerSubMerge_1.appendChild(array_ele);
+
+	}
+}
+function generateSubArray_2(n, values)  {
+  containerSubMerge_2.innerHTML = "";
+
+	for (var i = 0; i < values.length;i++) {
+
+		// Return a value from 1 to 100 (both inclusive)
+		var value = values[i];
+
+		// Creating element div
+		var array_ele = document.createElement("div");
+
+		// Adding class 'block' to div
+		array_ele.classList.add("block_submerge_2");
+
+		// Adding style to div
+		array_ele.style.height = `${value * 3}px`;
+		array_ele.style.transform = `translate(${i * 30}px)`;
+
+		// Creating label element for displaying
+		// size of particular block
+		var array_ele_label = document.createElement("label");
+		array_ele_label.classList.add("block_id");
+		array_ele_label.innerText = value;
+
+		// Appending created elements to index.html
+		array_ele.appendChild(array_ele_label);
+		containerSubMerge_2.appendChild(array_ele);
+
 	}
 }
 
@@ -81,9 +113,17 @@ async function merge(left, middle, right){
   }
 
   //creating subArrayMerge
-  const subArray = leftArray.concat(rightArray);
-  generateSubArray(sizeLeft+sizeRight, subArray);
-  var blocksSubMerge = document.querySelectorAll(".block_submerge");
+  // const subArray = leftArray.concat(rightArray);
+  generateSubArray_1(sizeLeft, leftArray);
+  var blocksSubMerge_1 = document.querySelectorAll(".block_submerge_1");
+
+  generateSubArray_2(sizeRight, rightArray);
+  var blocksSubMerge_2 = document.querySelectorAll(".block_submerge_2");
+
+  // for(var i = middle+1;i<=right;i++){
+  //   blocksSubMerge[i].style.marginLeft = "50px";
+  // }
+
 
 
   // MERGING TEMP ARRAYS
@@ -109,8 +149,8 @@ async function merge(left, middle, right){
     //end of pause
 
     //coloring pair to swap
-    blocksSubMerge[left+leftIndex].style.backgroundColor = "#4ABDFF";
-    blocksSubMerge[middle+1+rightIndex].style.backgroundColor = "#4ABDFF";
+    blocksSubMerge_1[leftIndex].style.backgroundColor = "#4ABDFF";
+    blocksSubMerge_2[rightIndex].style.backgroundColor = "#4ABDFF";
 
     if (leftArray[leftIndex] <= rightArray[rightIndex]){
 
@@ -122,7 +162,7 @@ async function merge(left, middle, right){
       );
       //end of pause
 
-      blocksSubMerge[left+leftIndex].style.backgroundColor = "#FCB018";
+      blocksSubMerge_1[leftIndex].style.backgroundColor = "#FCB018";
       // blocksSubMerge[middle+1+rightIndex].style.backgroundColor = "#979797";
 
       //pause
@@ -133,7 +173,7 @@ async function merge(left, middle, right){
       );
       //end of pause
 
-      blocksSubMerge[left+leftIndex].style.backgroundColor = "#979797";
+      blocksSubMerge_1[leftIndex].style.backgroundColor = "#979797";
 
       blocks[finalIndex].style.height = `${leftArray[leftIndex] * 3}px`;
       blocks[finalIndex].childNodes[0].innerText = leftArray[leftIndex];
@@ -161,7 +201,7 @@ async function merge(left, middle, right){
       //end of pause
 
       // blocksSubMerge[left+leftIndex].style.backgroundColor = "#979797";
-      blocksSubMerge[middle+1+rightIndex].style.backgroundColor = "#FCB018";
+      blocksSubMerge_2[rightIndex].style.backgroundColor = "#FCB018";
 
       //pause
       await new Promise((resolve) =>
@@ -183,7 +223,7 @@ async function merge(left, middle, right){
       //end of pause
       blocks[finalIndex].style.backgroundColor = "#979797";
 
-      blocksSubMerge[middle+1+rightIndex].style.backgroundColor = "#979797";
+      blocksSubMerge_2[rightIndex].style.backgroundColor = "#979797";
 
       rightIndex++;
     }
@@ -192,7 +232,7 @@ async function merge(left, middle, right){
 
   //copy remaining elements of left array (if existx)
   while (leftIndex < sizeLeft){
-    blocksSubMerge[left+leftIndex].style.backgroundColor = "#4ABDFF";
+    blocksSubMerge_1[leftIndex].style.backgroundColor = "#4ABDFF";
     //pause
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -218,7 +258,7 @@ async function merge(left, middle, right){
       }, 1000)
     );
     //end of pause
-    blocksSubMerge[left+leftIndex].style.backgroundColor = "#979797";
+    blocksSubMerge_1[leftIndex].style.backgroundColor = "#979797";
     //pause
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -232,7 +272,7 @@ async function merge(left, middle, right){
 
   //copy remaining elements of rightarray (if existx)
   while (rightIndex < sizeRight){
-    blocksSubMerge[middle+1+rightIndex].style.backgroundColor = "#4ABDFF";
+    blocksSubMerge_2[rightIndex].style.backgroundColor = "#4ABDFF";
     //pause
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -259,7 +299,7 @@ async function merge(left, middle, right){
     );
     //end of pause
 
-    blocksSubMerge[middle+1+rightIndex].style.backgroundColor = "#979797";
+    blocksSubMerge_2[rightIndex].style.backgroundColor = "#979797";
     //pause
     await new Promise((resolve) =>
       setTimeout(() => {
