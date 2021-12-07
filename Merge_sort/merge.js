@@ -4,7 +4,7 @@ var containerSubMerge = document.getElementById("array_submerge");
 
 function generateArray(n)  {
   container.innerHTML = "";
-  var values = [1, 5, 7, 9, 11, 27, 30, 60, 71,98,  9, 10, 21, 28, 30, 38, 50, 57, 78, 89];
+  var values = [1, 5, 7, 9, 11, 27, 30, 60, 71,95, 9, 10, 21, 28, 30, 38, 50, 57, 78,88];
 
 	for (var i = 0; i < values.length;i++) {
 
@@ -272,6 +272,18 @@ async function merge(left, middle, right){
   }
 
   //Stop MERGING
+
+  for(var i = 0; i < blocks.length; i++){
+    blocks[i].style.backgroundColor = "#000";
+    //pause
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, 50)
+    );
+    //end of pause
+
+  }
 }
 
 generateArray(20);
