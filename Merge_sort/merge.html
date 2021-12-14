@@ -129,10 +129,71 @@ canvas{
 
 
   <!-- Contact section -->
+
+
   <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
 
     <div class="w3-content" style="max-width:1000px">
 			<h3>Funkce merge</h3>
+			<div class="w3-panel w3-card w3-light-grey">
+						<h4>Pseudokód funkce Merge</h4>
+						<div class="w3-code">
+							<pre class="tab">
+array: pole prvů
+n: délka pole
+
+
+merge (array, left, middle, right)
+	sizeLeft = middle - left + 1
+	sizeRight = right - middle;
+
+	vytvor leftArray delky sizeLeft
+	vytvor rightArray delky sizeRight
+
+	//kopiruju prvky z array do leftArray
+	for i = 0 to sizeLeft
+		leftArray[i] = array[left+i]
+	end for
+
+	//kopiruju prvky z array do rightArray
+	for i = 0 to sizeRight
+		rightArray[i] = array[middle + i + 1]
+	end for
+
+	leftIndex = 0
+	rightIndex = 0
+
+	arrayIndex = left
+
+	//porovnávám prvky v obou polích a vetší vlozím do pole array
+	while(leftIndex < sizeLeft and rightIndex < sizeRight)
+		if leftArray[leftIndex] <= rightArray[rightIndex]
+			array[arrayIndex] = leftArray[leftIndex]
+			leftIndex++
+		end if
+		else
+			array[arrayIndex] = rightArray[rightIndex]
+			rightIndex++
+		end else
+		arrayIndex++
+	end while
+
+	//dokopiruju zbytek pole leftArray (pokud jsou zde jeste nejake prvky)
+	while leftIndex < sizeLeft
+		array[arrayIndex] = leftArray[leftIndex]
+		leftIndex++
+		arrayIndex++
+	end while
+
+	//dokopiruju zbytek pole rightArray (pokud jsou zde jeste nejake prvky)
+	while rightIndex < sizeRight
+		array[arrayIndex] = rightArray[rightIndex]
+		rightIndex++
+		arrayIndex++
+	end while
+						</div>
+			</div>
+			<h4>Ukázka funkce Merge</h4>
       <div id="array_merge"> </div>
 			<div class="w3-row">
 				<div class="w3-half w3-container">
@@ -142,6 +203,26 @@ canvas{
 					<div id="array_submerge_2"></div>
 				</div>
 
+			</div>
+			<h3>Merge sort</h3>
+			<div class="w3-panel w3-card w3-light-grey">
+						<h4>Pseudokód funkce Merge sort</h4>
+						<div class="w3-code">
+							<pre class="tab">
+array: pole prvků
+left: zacatek pole
+right: konec pole
+
+mergeSort(array, left, right)
+	if left < right
+		middle = (left + right)/2
+		mergeSort(array, left, middle)
+		mergeSort(array,middle+1, right)
+
+		merge(array, left, middle, right)
+	end if
+							</pre>
+						</div>
 			</div>
 			<h3>Merge sort ukázka</h3>
 			<iframe src="https://ddohnal.github.io/Sorting_algorithms/Merge_sort/merge_sort_iframe.html" title="mergeSort" width="800" height="800" style="border:none;" ></iframe>
