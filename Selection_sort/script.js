@@ -1,3 +1,14 @@
+var isSorting = false;
+var doStep = false;
+var delay = 250;
+
+// document.getElementById("stepBtn").disabled = false;
+document.getElementById("runBtn").disabled = false;
+
+
+
+
+
 // Script to open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
@@ -66,29 +77,42 @@ function swap(el1, el2) {
 			setTimeout(() => {
 				container.insertBefore(el2, el1);
 				resolve();
-			}, 100);
+			}, delay);
 		});
 	});
 }
 
 // Asynchronous SelectSort function
-async function SelectSort(delay = 100) {
+async function SelectSort() {
 	var blocks = document.querySelectorAll(".block_array");
 
 	// SelectSort Algorithm
 	var min_idx = 0;
 
 	for (var i = 0; i < blocks.length; i += 1){
+
+    await new Promise((resolve) =>
+        setTimeout(() => {
+            resolve();
+        }, delay)
+    );
+
 		min_idx = i;
 		blocks[i].style.backgroundColor = "#FCB018";
 		for(var j = i + 1;j < blocks.length; j += 1){
+      await new Promise((resolve) =>
+          setTimeout(() => {
+              resolve();
+          }, delay)
+      );
+
 			blocks[j].style.backgroundColor = "#FC1818";
 
 
 				await new Promise((resolve) =>
 	        setTimeout(() => {
 	          resolve();
-	        }, 100)
+	        }, delay)
 	      );
 				console.log("run");
 				var value1 = Number(blocks[j].childNodes[0].innerHTML);
@@ -110,7 +134,7 @@ async function SelectSort(delay = 100) {
 		await new Promise((resolve) =>
 				setTimeout(() => {
 						resolve();
-				}, 100)
+				}, delay)
 		);
 		blocks[min_idx].style.backgroundColor = "#979797";
 		var temp1 = blocks[min_idx].style.height;
@@ -125,6 +149,7 @@ async function SelectSort(delay = 100) {
 }
 
 function startSorting(){
+  isSorting = true;
   SelectSort();
   document.getElementById("runBtn").disabled = true;
 
@@ -132,9 +157,13 @@ function startSorting(){
 
 function resetArray(){
   generatearray(20);
+  // SelectSort();
   document.getElementById("runBtn").disabled = false;
 
 }
+
+
+
 
 // Calling generatearray function
 generatearray(20);
