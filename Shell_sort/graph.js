@@ -118,6 +118,7 @@ function shellSort(arr) {
 			let temp = arr[i];
 
 			let j;
+      countSteps += 1;
 			for (j = i; j >= gap && arr[j-gap] > temp; j-=gap)  {
         countSteps += 1;
 				arr[j] = arr[j-gap];
@@ -143,6 +144,7 @@ function shellSortWithCustomGaps(arr, gaps) {
 
 			//This is the insection sort to sort the section into order
 			let j;
+      countSteps += 1;
 			for (j = i; j >= gap && arr[j-gap] > temp; j-=gap)
 			{
         countSteps += 1;
