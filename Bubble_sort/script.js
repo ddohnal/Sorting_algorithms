@@ -123,21 +123,11 @@ async function* BubbleSort(delay = 100) {
 }
 
 var coroutinesSort = BubbleSort()
-
-function startSorting() {
-  BubbleSort();
-  //document.getElementById("runBtn").disabled = true;
-
-}
-
 function resetArray() {
   generatearray(20);
-  //coroutinesSort.cancel();
-  //document.getElementById("runBtn").disabled = false;
+  coroutinesSort = BubbleSort()
 
 }
-
-
 
 function stepSort() {
   coroutinesSort.next()
@@ -145,6 +135,3 @@ function stepSort() {
 
 // Calling generatearray function
 generatearray(20);
-
-// Calling SelectSort function
-//BubbleSort();

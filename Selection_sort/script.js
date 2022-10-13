@@ -151,16 +151,10 @@ async function* SelectSort() {
 
 var coroutinesSort = SelectSort()
 
-function startSorting() {
-	SelectSort();
-	document.getElementById("runBtn").disabled = true;
-
-}
 
 function resetArray() {
+	coroutinesSort = SelectSort()
 	generatearray(20);
-	// SelectSort();
-	//document.getElementById("runBtn").disabled = false;
 
 }
 
@@ -168,9 +162,6 @@ function stepSort() {
 	coroutinesSort.next()
 }
 
-
 // Calling generatearray function
 generatearray(20);
 
-// Calling SelectSort function
-//SelectSort();

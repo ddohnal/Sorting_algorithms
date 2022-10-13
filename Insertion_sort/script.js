@@ -141,16 +141,11 @@ async function* InsertSort(delay = 100) {
 
 var coroutinesSort = InsertSort()
 
-function startSorting() {
-	InsertSort();
-	//document.getElementById("runBtn").disabled = true;
-}
-
 function resetArray() {
 	generatearray(20);
-	//document.getElementById("runBtn").disabled = false;
-}
+	coroutinesSort = InsertSort()
 
+}
 
 function stepSort() {
 	coroutinesSort.next()
@@ -159,5 +154,3 @@ function stepSort() {
 // Calling generatearray function
 generatearray(20);
 
-// Calling SelectSort function
-//InsertSort();
