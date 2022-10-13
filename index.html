@@ -7,91 +7,127 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Raleway", sans-serif
+  }
+
+  .w3-third img {
+    margin-bottom: -6px;
+    opacity: 0.8;
+    cursor: pointer
+  }
+
+  .w3-third img:hover {
+    opacity: 1
+  }
 </style>
 <script>
   MathJax = {
-    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
   };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
 <script src="script.js"></script>
+
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-  <h3 class="w3-padding-64 w3-center"><b>Seminář<br>programování</b></h3>
-  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Třídění</a>
-  <a href="Selection_sort\selection_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Selection sort</a>
-  <a href="Insertion_sort\insertion_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Insertion sort</a>
-  <a href="Bubble_sort\bubble_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Bubble sort</a>
-  <a href="Shaker_sort\shaker_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shaker sort</a>
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
+    style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+    <h3 class="w3-padding-64 w3-center"><b>Seminář<br>programování</b></h3>
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Třídění</a>
+    <a href="Selection_sort\selection_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Selection sort</a>
+    <a href="Insertion_sort\insertion_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Insertion sort</a>
+    <a href="Bubble_sort\bubble_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Bubble sort</a>
+    <!-- <a href="Shaker_sort\shaker_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shaker sort</a>
   <a href="Shell_sort\shell_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Shell sort</a>
   <a href="Quick_sort\quick_sort.html" onclick="w3_close()" class="w3-bar-item w3-button">Quick sort</a>
-  <a href="Merge_sort\merge.html" onclick="w3_close()" class="w3-bar-item w3-button">Merge sort</a>
-  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Srovnání</a>
-  <!-- <i class="fa fa-close"></i> -->
-  <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-padding-16 w3-button w3-display-topright"></i>
-</nav>
+  <a href="Merge_sort\merge.html" onclick="w3_close()" class="w3-bar-item w3-button">Merge sort</a> -->
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">Srovnání</a>
+    <!-- <i class="fa fa-close"></i> -->
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-padding-16 w3-button w3-display-topright"></i>
+  </nav>
 
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">Seminář programování</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
-</header>
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+    <span class="w3-left w3-padding">Seminář programování</span>
+    <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+  </header>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay"></div>
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px">
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
 
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-
-
-  <!-- Modal for full size images on click-->
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:83px"></div>
 
 
-  <!-- About section -->
+    <!-- Modal for full size images on click-->
 
 
-  <!-- Contact section -->
-  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
-    <div class="w3-content" style="max-width:1000px">
-      <h2><b>Třídění</b></h2>
-      <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-      <p>Tříděním se obvykle rozumí proces přeuspořádání objektů v požadovaném pořadí, podle určitého daného kritéria. Jeho účelem je obvykle ulehčit následné prohledávání dané množiny objektů. Proto je třídění důležité, jak pro člověka, tak pro počítač, aby mohl se
-        seřazenými prvky efektivně a rychle pracovat. Třídění se nejčastěji provádí v číselném nebo abecedním (tzv. lexikografickém) pořadí a může být vzestupné (A-Z, 0-9) nebo sestupné (Z-A, 9-0).</p>
-      <h4>Pomocí třídění můžete řešit celou řadu problémů:</h4>
-      <p><b>Vyhledávání:</b> Vyhledávání položek v seznamu je mnohem rychlejší, pokud je seznam seřazen.</p>
-      <p><b>Výběr: </b>Výběr položek ze seznamu na základě jejich vztahu k ostatním položkám je jednodušší, pokud jsou data seřazena. Například nalezení k-té největší nebo nejmenší hodnoty nebo nalezení mediánu hodnoty seznamu je mnohem snazší, pokud jsou hodnoty seřazeny vzestupně nebo sestupně.</p>
-      <p><b>Duplikáty: </b> Nalezení duplicitních hodnot v seznamu lze provést velmi rychle, pokud je seznam seřazen.</p>
-      <p><b>Rozložení: </b> Analýza rozdělení četností položek v seznamu je velmi rychlá, pokud je seznam seřazen. Například nalezení prvku, který se v seznamu vyskytuje nejčastěji nebo nejméně často, je u setříděného seznamu poměrně jednoduché.</p>
-      <p>Od komerčních aplikací po akademický výzkum a všude mezi tím existuje nespočet způsobů, jak můžete využít třídění, abyste si ušetřili čas a námahu.</p>
-      <h3>Třídící algoritmy</h3>
-      <p>Třídicí algoritmy jsou souborem instrukcí, které na vstupu přijímají pole nebo seznam a uspořádávají položky v určitém pořadí. Existují <b>desítky</b> třídících algoritmů.</p>
-      <h4>Dělení třídících algoritmů</h4>
-      <h5>Vnitřní třídící algoritmy</h5>
-      <p>Prvky tříděné posloupnosti se nachází uvnitř paměti počítače. Problém: co když budeme chtít setřídit takové množství dat, které se nám do paměti nevejde?</p>
-      <h5>Vnější třídící algoritmy</h5>
-      <p>Zde jsou prvky uloženy v souborech na vnější paměti a ty se poté po částech přesouvají do vnitřní paměti (zde jsou provedeny operace porovnaní a přesun) a následně se opět uloží do souboru na vnější paměť. Tento přístup je obecně pomalejší (používáme jen v krajních případech).</p>
-      <h5>Efektivita třídících algoritmů</h5>
-      <p>Důležitou vlastností algoritmu je časová náročnost výpočtů provedené podle daného algoritmu.</p>
-      <ul>
-        <li>Ta se nezískává měřením doby výpočtu pro různá data, ale analýzou algoritmu, jejímž výsledkem je časová složitost algoritmu.</li>
-        <li>Časová složitost algoritmu vyjadřuje závislost času potřebného pro provedení výpočtu na rozsahu (velikosti) vstupních dat.</li>
-        <li>Čas se však neměří sekundách, ale počtem provedených operací, přičemž trvání každé operace se chápe jako bezrozměrná jednotka.</li>
-        <li>Přesné určení počtu operací při analýze složitosti algoritmu bývá velmi složité.</li>
-        <li>Zvlášť komplikované, ba i nemožné, bývá určení počtu operací v průměrném případě. Proto se většinou omezujeme jen na analýzu nejhoršího případu.</li>
-      </ul>
-      <h6>Asymptotické notace</h6>
-      <p>Časovou složitost vyjadřujeme pomocí tzv. asymptotické notace:</p>
-      <div class="w3-panel w3-white w3-leftbar">
-          <p>O dvou funkcích $f$ a $g$ definovaných na množině přirozených čísel a s nezáporným oborem hodnot říkáme, že: </p>
+    <!-- About section -->
+
+
+    <!-- Contact section -->
+    <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+      <div class="w3-content" style="max-width:1000px">
+        <h2><b>Třídění</b></h2>
+        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+        <p>Tříděním se obvykle rozumí proces přeuspořádání objektů v požadovaném pořadí, podle určitého daného kritéria.
+          Jeho účelem je obvykle ulehčit následné prohledávání dané množiny objektů. Proto je třídění důležité, jak pro
+          člověka, tak pro počítač, aby mohl se
+          seřazenými prvky efektivně a rychle pracovat. Třídění se nejčastěji provádí v číselném nebo abecedním (tzv.
+          lexikografickém) pořadí a může být vzestupné (A-Z, 0-9) nebo sestupné (Z-A, 9-0).</p>
+        <h4>Pomocí třídění můžete řešit celou řadu problémů:</h4>
+        <p><b>Vyhledávání:</b> Vyhledávání položek v seznamu je mnohem rychlejší, pokud je seznam seřazen.</p>
+        <p><b>Výběr: </b>Výběr položek ze seznamu na základě jejich vztahu k ostatním položkám je jednodušší, pokud jsou
+          data seřazena. Například nalezení k-té největší nebo nejmenší hodnoty nebo nalezení mediánu hodnoty seznamu je
+          mnohem snazší, pokud jsou hodnoty seřazeny vzestupně nebo sestupně.</p>
+        <p><b>Duplikáty: </b> Nalezení duplicitních hodnot v seznamu lze provést velmi rychle, pokud je seznam seřazen.
+        </p>
+        <p><b>Rozložení: </b> Analýza rozdělení četností položek v seznamu je velmi rychlá, pokud je seznam seřazen.
+          Například nalezení prvku, který se v seznamu vyskytuje nejčastěji nebo nejméně často, je u setříděného seznamu
+          poměrně jednoduché.</p>
+        <p>Od komerčních aplikací po akademický výzkum a všude mezi tím existuje nespočet způsobů, jak můžete využít
+          třídění, abyste si ušetřili čas a námahu.</p>
+        <h3>Třídící algoritmy</h3>
+        <p>Třídicí algoritmy jsou souborem instrukcí, které na vstupu přijímají pole nebo seznam a uspořádávají položky
+          v určitém pořadí. Existují <b>desítky</b> třídících algoritmů.</p>
+        <h4>Dělení třídících algoritmů</h4>
+        <h5>Vnitřní třídící algoritmy</h5>
+        <p>Prvky tříděné posloupnosti se nachází uvnitř paměti počítače. Problém: co když budeme chtít setřídit takové
+          množství dat, které se nám do paměti nevejde?</p>
+        <h5>Vnější třídící algoritmy</h5>
+        <p>Zde jsou prvky uloženy v souborech na vnější paměti a ty se poté po částech přesouvají do vnitřní paměti (zde
+          jsou provedeny operace porovnaní a přesun) a následně se opět uloží do souboru na vnější paměť. Tento přístup
+          je obecně pomalejší (používáme jen v krajních případech).</p>
+        <h5>Efektivita třídících algoritmů</h5>
+        <p>Důležitou vlastností algoritmu je časová náročnost výpočtů provedené podle daného algoritmu.</p>
+        <ul>
+          <li>Ta se nezískává měřením doby výpočtu pro různá data, ale analýzou algoritmu, jejímž výsledkem je časová
+            složitost algoritmu.</li>
+          <li>Časová složitost algoritmu vyjadřuje závislost času potřebného pro provedení výpočtu na rozsahu
+            (velikosti) vstupních dat.</li>
+          <li>Čas se však neměří sekundách, ale počtem provedených operací, přičemž trvání každé operace se chápe jako
+            bezrozměrná jednotka.</li>
+          <li>Přesné určení počtu operací při analýze složitosti algoritmu bývá velmi složité.</li>
+          <li>Zvlášť komplikované, ba i nemožné, bývá určení počtu operací v průměrném případě. Proto se většinou
+            omezujeme jen na analýzu nejhoršího případu.</li>
+        </ul>
+        <h6>Asymptotické notace</h6>
+        <p>Časovou složitost vyjadřujeme pomocí tzv. asymptotické notace:</p>
+        <div class="w3-panel w3-white w3-leftbar">
+          <p>O dvou funkcích $f$ a $g$ definovaných na množině přirozených čísel a s nezáporným oborem hodnot říkáme,
+            že: </p>
           <p>$f$ roste řádově <b>nejvýše</b> tak rychle, jako $g$ a píšeme:</p>
           <div class="w3-center">
             <p>$f(n)=O(g(n))$,</p>
@@ -100,12 +136,13 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <div class="w3-center">
             <p>$f(n) \leq K \cdot g(n)$ pro všechna $n> n_1$.</p>
           </div>
+        </div>
+
       </div>
-
     </div>
-  </div>
 
-<!-- End page content -->
-</div>
+    <!-- End page content -->
+  </div>
 </body>
+
 </html>
