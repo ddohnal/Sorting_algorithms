@@ -3,7 +3,7 @@ var doStep = false;
 var delay = 250;
 
 // document.getElementById("stepBtn").disabled = false;
-document.getElementById("runBtn").disabled = false;
+
 
 
 
@@ -11,21 +11,21 @@ document.getElementById("runBtn").disabled = false;
 
 // Script to open and close sidebar
 function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
 }
 
 function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
 }
 
 // Modal Image Gallery
 function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
 }
 
 // Construct animation
@@ -71,7 +71,7 @@ function swap(el1, el2) {
 		el1.style.transform = el2.style.transform;
 		el2.style.transform = temp;
 
-		window.requestAnimationFrame(function() {
+		window.requestAnimationFrame(function () {
 
 			// For waiting for .25 sec
 			setTimeout(() => {
@@ -83,90 +83,94 @@ function swap(el1, el2) {
 }
 
 // Asynchronous SelectSort function
-async function SelectSort() {
+async function* SelectSort() {
 	var blocks = document.querySelectorAll(".block_array");
 
 	// SelectSort Algorithm
 	var min_idx = 0;
 
-	for (var i = 0; i < blocks.length; i += 1){
+	for (var i = 0; i < blocks.length; i += 1) {
 
-    await new Promise((resolve) =>
-        setTimeout(() => {
-            resolve();
-        }, delay)
-    );
+		await new Promise((resolve) =>
+			setTimeout(() => {
+				resolve();
+			}, delay)
+		);
 
 		min_idx = i;
 		blocks[i].style.backgroundColor = "#FCB018";
-		for(var j = i + 1;j < blocks.length; j += 1){
-      await new Promise((resolve) =>
-          setTimeout(() => {
-              resolve();
-          }, delay)
-      );
 
+		for (var j = i + 1; j < blocks.length; j += 1) {
+			await new Promise((resolve) =>
+				setTimeout(() => {
+					resolve();
+				}, delay)
+			);
+			yield
 			blocks[j].style.backgroundColor = "#FC1818";
 
 
-				await new Promise((resolve) =>
-	        setTimeout(() => {
-	          resolve();
-	        }, delay)
-	      );
-				console.log("run");
-				var value1 = Number(blocks[j].childNodes[0].innerHTML);
-				var value2 = Number(blocks[min_idx].childNodes[0].innerHTML);
+			await new Promise((resolve) =>
+				setTimeout(() => {
+					resolve();
+				}, delay)
+			);
+			console.log("run");
+			var value1 = Number(blocks[j].childNodes[0].innerHTML);
+			var value2 = Number(blocks[min_idx].childNodes[0].innerHTML);
 
-				if (value1 < value2){
-					if (min_idx !== i) {
+			if (value1 < value2) {
+				if (min_idx !== i) {
+					yield
 
-
-          blocks[min_idx].style.backgroundColor = "#979797";
-        	}
-					min_idx = j;
-					blocks[min_idx].style.backgroundColor = "#FF4949";
-					} else{
-						blocks[j].style.backgroundColor = " #979797";
-					}
+					blocks[min_idx].style.backgroundColor = "#979797";
+				}
+				min_idx = j;
+				blocks[min_idx].style.backgroundColor = "#FF4949";
+			} else {
+				blocks[j].style.backgroundColor = " #979797";
+			}
 
 		}
 		await new Promise((resolve) =>
-				setTimeout(() => {
-						resolve();
-				}, delay)
+			setTimeout(() => {
+				resolve();
+			}, delay)
 		);
 		blocks[min_idx].style.backgroundColor = "#979797";
 		var temp1 = blocks[min_idx].style.height;
-    var temp2 = blocks[min_idx].childNodes[0].innerText;
-    blocks[min_idx].style.height = blocks[i].style.height;
-    blocks[i].style.height = temp1;
-    blocks[min_idx].childNodes[0].innerText = blocks[i].childNodes[0].innerText;
-    blocks[i].childNodes[0].innerText = temp2;
+		var temp2 = blocks[min_idx].childNodes[0].innerText;
+		blocks[min_idx].style.height = blocks[i].style.height;
+		blocks[i].style.height = temp1;
+		blocks[min_idx].childNodes[0].innerText = blocks[i].childNodes[0].innerText;
+		blocks[i].childNodes[0].innerText = temp2;
 		blocks[i].style.backgroundColor = "#000";
 
 	}
 }
 
-function startSorting(){
-  isSorting = true;
-  SelectSort();
-  document.getElementById("runBtn").disabled = true;
+var coroutinesSort = SelectSort()
+
+function startSorting() {
+	SelectSort();
+	document.getElementById("runBtn").disabled = true;
 
 }
 
-function resetArray(){
-  generatearray(20);
-  // SelectSort();
-  document.getElementById("runBtn").disabled = false;
+function resetArray() {
+	generatearray(20);
+	// SelectSort();
+	//document.getElementById("runBtn").disabled = false;
 
 }
 
-
+function stepSort() {
+	coroutinesSort.next()
+}
 
 
 // Calling generatearray function
 generatearray(20);
 
 // Calling SelectSort function
-SelectSort();
+//SelectSort();

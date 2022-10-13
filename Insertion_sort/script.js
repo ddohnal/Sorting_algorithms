@@ -2,21 +2,21 @@ var container = document.getElementById("array");
 
 // Script to open and close sidebar
 function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
 }
 
 function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
 }
 
 // Modal Image Gallery
 function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
 }
 
 // Function to generate the array of blocks
@@ -58,7 +58,7 @@ function swap(el1, el2) {
 		el1.style.transform = el2.style.transform;
 		el2.style.transform = temp;
 
-		window.requestAnimationFrame(function() {
+		window.requestAnimationFrame(function () {
 
 			// For waiting for .25 sec
 			setTimeout(() => {
@@ -70,88 +70,94 @@ function swap(el1, el2) {
 }
 
 // Asynchronous InsertSort function
-async function InsertSort(delay = 100) {
+async function* InsertSort(delay = 100) {
 	var blocks = document.querySelectorAll(".block_array");
 
 	// InsertSort Algorithm
-  for(var i = 1; i < blocks.length ; i += 1){
+	for (var i = 1; i < blocks.length; i += 1) {
 
-    var value1 = Number(blocks[i].childNodes[0].innerHTML);
+		var value1 = Number(blocks[i].childNodes[0].innerHTML);
 
-    var j = i - 1;
+		var j = i - 1;
 
-    var value2 = Number(blocks[j].childNodes[0].innerHTML);
+		var value2 = Number(blocks[j].childNodes[0].innerHTML);
 
 
-    blocks[i].style.backgroundColor = "FCB018";
-    await new Promise((resolve) =>
-				setTimeout(() => {
-						resolve();
-				}, 250)
+		blocks[i].style.backgroundColor = "FCB018";
+		await new Promise((resolve) =>
+			setTimeout(() => {
+				resolve();
+			}, 250)
 		);
-    if (i == 1){
-      blocks[j].style.backgroundColor = "#000";
-    }
+		if (i == 1) {
+			blocks[j].style.backgroundColor = "#000";
+		}
 
 
-    while((j >=0) && (value1 < value2 )){
-      // await swap(blocks[j], blocks[j+1]);
-      // blocks = document.querySelectorAll(".block_array");
+		while ((j >= 0) && (value1 < value2)) {
+			// await swap(blocks[j], blocks[j+1]);
+			// blocks = document.querySelectorAll(".block_array");
 
-      // swap
+			// swap
+			yield
+			blocks[j].style.backgroundColor = "#000";
+			blocks[j + 1].style.backgroundColor = "#FCB018";
 
-      blocks[j].style.backgroundColor = "#000";
-      blocks[j+1].style.backgroundColor = "#FCB018";
+			await new Promise((resolve) =>
+				setTimeout(() => {
+					resolve();
+				}, 250)
+			);
 
-      await new Promise((resolve) =>
-  				setTimeout(() => {
-  						resolve();
-  				}, 250)
-  		);
+			var temp1 = blocks[j + 1].style.height;
+			var temp2 = blocks[j + 1].childNodes[0].innerText;
 
-      var temp1 = blocks[j+1].style.height;
-      var temp2 = blocks[j+1].childNodes[0].innerText;
+			blocks[j + 1].style.height = blocks[j].style.height;
+			blocks[j + 1].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
 
-      blocks[j+1].style.height = blocks[j].style.height;
-      blocks[j+1].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
+			blocks[j].style.height = temp1;
+			blocks[j].childNodes[0].innerText = temp2;
 
-      blocks[j].style.height = temp1;
-      blocks[j].childNodes[0].innerText = temp2;
-
-      blocks[j].style.backgroundColor = "#FCB018";
-      blocks[j+1].style.backgroundColor = "#000";
+			blocks[j].style.backgroundColor = "#FCB018";
+			blocks[j + 1].style.backgroundColor = "#000";
 
 
 			await new Promise((resolve) =>
-					setTimeout(() => {
-							resolve();
-					}, 250)
+				setTimeout(() => {
+					resolve();
+				}, 250)
 			);
 
-      blocks[j].style.backgroundColor = "#000";
-      j -= 1;
-      if (j < 0){
-        break;
-      } else{
-        value2 = Number(blocks[j].childNodes[0].innerHTML);
-      }
-    }
-  }
+			blocks[j].style.backgroundColor = "#000";
+			j -= 1;
+			if (j < 0) {
+				break;
+			} else {
+				value2 = Number(blocks[j].childNodes[0].innerHTML);
+			}
+		}
+	}
 }
 
-function startSorting(){
-  InsertSort();
-  document.getElementById("runBtn").disabled = true;
+var coroutinesSort = InsertSort()
+
+function startSorting() {
+	InsertSort();
+	//document.getElementById("runBtn").disabled = true;
 }
 
-function resetArray(){
-  generatearray(20);
-  document.getElementById("runBtn").disabled = false;
+function resetArray() {
+	generatearray(20);
+	//document.getElementById("runBtn").disabled = false;
+}
 
+
+function stepSort() {
+	coroutinesSort.next()
 }
 
 // Calling generatearray function
 generatearray(20);
 
 // Calling SelectSort function
-InsertSort();
+//InsertSort();
